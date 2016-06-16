@@ -1,7 +1,7 @@
 ---
 title: "Knitr"
 author: "John Muschelli"
-date: "January 5, 2016"
+date: "June 17, 2016"
 output:
   html_document:
     toc: yes
@@ -27,7 +27,7 @@ I'm reading in the bike lanes here.
 library(stringr)
 library(plyr)
 library(dplyr)
-fname <- "../../data/Bike_Lanes.csv"
+fname <- "http://www.aejaffe.com/summerR_2016/data/Bike_Lanes.csv"
 bike = read.csv(fname, as.is = TRUE)
 ```
 
@@ -161,8 +161,8 @@ print.xtable(xtab, type="html")
 ```
 
 ```{r, results='asis'}
-library(DT)
-datatable(summary(mod.type)$coef)
+library(pander)
+pander(summary(mod.type)$coef)
 ```
 
 OK, that's pretty good, but let's say we have all three models.  Another package called `stargazer` can put models together easily and pritn them out.  So `xtable` is really good when you are trying to print out a table (in html, otherwise make the table and use `write.csv` to get it in Excel and then format) really quickly and in a report.  But it doesn't work so well with *many* models together.  So let's use stargazer.  Again, you need to use `install.packages("stargazer")` if you don't have function.  

@@ -72,6 +72,7 @@ first_and_last %>%  head(4)
 ## ------------------------------------------------------------------------
 # have to remove missing days
 wide = filter(long, !is.na(date))
+wide2 = spread(wide, line, number)
 wide = spread(wide, type, number)
 head(wide)
 
